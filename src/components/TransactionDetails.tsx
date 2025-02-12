@@ -36,7 +36,10 @@ export default function TransactionDetails() {
           <div>
             <dt className="text-sm font-medium text-muted-foreground">Notes</dt>
             <dd className="prose">
-              <div dangerouslySetInnerHTML={{ __html: transaction.notes }} />
+              <div 
+                dangerouslySetInnerHTML={{ __html: transaction.notes }} 
+                className="[&_ul]:list-disc [&_ol]:list-decimal pl-4"
+              />
             </dd>
           </div>
         </dl>
