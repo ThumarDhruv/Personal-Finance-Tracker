@@ -4,11 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { RootState, Transaction, TransactionType } from '../types';
 import { deleteTransaction, setFilter, setPage } from '../store/transactionsSlice';
 import TransactionDialog from './TransactionDialog';
+import { shallowEqual } from 'react-redux';
 
 export default function TransactionList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { transactions, filter, page, pageSize } = useSelector((state: RootState) => state.transactions);
+  const transactions = useSelector((state: RootState) => state.transactions.transactions);
+
+  // For multiple values
+  const { filter, page, pageSize } = useSelector((state: RootState) => ({
+    filter: state.transactions.filter,
+    page: state.transactions.page,
+    pageSize: state.transactions.pageSize
+  }), shallowEqual);
+
   const [editTransaction, setEditTransaction] = React.useState<Transaction | null>(null);
   const [dialogOpen, setDialogOpen] = React.useState(false);
 

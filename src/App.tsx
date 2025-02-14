@@ -1,7 +1,7 @@
 import  { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setLoading } from './store/transactionsSlice';
+import { useAppDispatch } from '../src/store';
+import { setLoading, fetchTransactionsAsync } from './store/transactionsSlice';
 import Layout from './components/Layout';
 import Dashboard from './components/Dashboard';
 import TransactionList from './components/TransactionList';
@@ -10,18 +10,18 @@ import ProtectedRoute from './components/ProtectedRoute';
 import AuthForm from './components/AuthForm';
 import Navbar from './components/Navbar';
 // import LoadingScreen from './components/LoadingScreen';
+import { RootState } from '../src/store';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const { user } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
-    dispatch(setLoading(true));
-    const timer = setTimeout(() => {
-      dispatch(setLoading(false));
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [dispatch]);
+    if (user?.id) {
+      dispatch(fetchTransactionsAsync(user.id));
+    }
+  }, [dispatch, user?.id]);
 
   return (
     <Routes>

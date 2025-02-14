@@ -23,3 +23,7 @@ export const setUserSession = (user: User) => {
 export const clearUserSession = () => {
   localStorage.removeItem('loggedInUser');
 };
+
+export const initializeUserTransactions = (userId: string) => {
+  localStorage.setItem(`transactions_${userId}`, '[]');
+};
