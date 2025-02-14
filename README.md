@@ -43,5 +43,5 @@ A personal finance tracker app built using React, Redux Toolkit, and various mod
 - **Radix UI**: For accessible and customizable components (e.g., modals, switches).
 - **Chart.js / Recharts**: For displaying financial data visualizations.
 - **LocalStorage API**: For persisting transaction data across sessions.
-'''
+
 

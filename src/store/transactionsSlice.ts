@@ -9,6 +9,8 @@ const loadTransactions = (): Transaction[] => {
 const initialState: TransactionState = {
   transactions: loadTransactions(),
   filter: 'all',
+  page: 1,
+  pageSize: 5,
   loading: false,
   error: null,
 };
@@ -38,6 +40,12 @@ const transactionsSlice = createSlice({
     setFilter: (state, action: PayloadAction<TransactionType | 'all'>) => {
       state.filter = action.payload;
     },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
+    setPageSize: (state, action: PayloadAction<number>) => {
+      state.pageSize = action.payload;
+    },
   },
 });
 
@@ -47,6 +55,8 @@ export const {
   updateTransaction,
   deleteTransaction,
   setFilter,
+  setPage,
+  setPageSize,
 } = transactionsSlice.actions;
 
 export default transactionsSlice.reducer;

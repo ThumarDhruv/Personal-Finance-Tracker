@@ -14,6 +14,8 @@ export interface Transaction {
 export interface TransactionState {
   transactions: Transaction[];
   filter: TransactionType | 'all';
+  page: number;
+  pageSize: number;
   loading: boolean;
   error: string | null;
 }
