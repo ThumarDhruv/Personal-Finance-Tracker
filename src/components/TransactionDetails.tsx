@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../types';
-
+import "react-quill/dist/quill.snow.css";
 export default function TransactionDetails() {
   const { id } = useParams();
   const transaction = useSelector((state: RootState) => 
@@ -37,8 +37,9 @@ export default function TransactionDetails() {
             <dt className="text-sm font-medium text-muted-foreground">Notes</dt>
             <dd className="prose">
               <div 
+                className="mt-1 prose dark:prose-invert leading-snug ql-editor"
                 dangerouslySetInnerHTML={{ __html: transaction.notes }} 
-                className="[&_ul]:list-disc [&_ol]:list-decimal pl-4"
+                // className="[&_ul]:list-disc [&_ol]:list-decimal pl-4"
               />
             </dd>
           </div>
