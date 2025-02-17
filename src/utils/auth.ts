@@ -1,4 +1,4 @@
-import { User } from "../types/auth";
+import type { User } from '../types/index';
 
 export const getUsers = (): User[] => {
   const users = localStorage.getItem("users");

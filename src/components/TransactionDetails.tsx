@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../types';
 import { deleteTransaction } from '../store/transactionsSlice';
 import { Link, useNavigate } from 'react-router-dom';
+import "react-quill/dist/quill.snow.css";
 
 export default function TransactionDetails() {
   const { id } = useParams();
@@ -42,7 +43,7 @@ export default function TransactionDetails() {
             <dd className="prose">
               <div 
                 dangerouslySetInnerHTML={{ __html: transaction.notes }} 
-                className="[&_ul]:list-disc [&_ol]:list-decimal pl-4"
+                className="mt-1 prose dark:prose-invert leading-snug ql-editor"
               />
             </dd>
           </div>
