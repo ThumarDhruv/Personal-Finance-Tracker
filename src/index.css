@@ -74,6 +74,28 @@
     @apply bg-background text-foreground;
   }
 }
+.prose ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem;
+}
+.prose ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem;
+}
+.prose li {
+  margin-bottom: 4px;
+}
 
+.list-container ol {
+  @apply list-decimal pl-6;
+}
 
+.list-container ol ol {
+  list-style-type: lower-alpha;
+  @apply pl-6 ml-4;
+}
 
+.list-container ol ol ol {
+  list-style-type: lower-roman;
+  @apply pl-6 ml-6;
+}
